@@ -5,16 +5,16 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class GruposEntrenamientos extends Model
+class Aparato extends Model
 {
     use HasFactory;
-
-    protected $table = 'grupos_de_entrenamientos';
+    
+    protected $table = 'aparatos';
     protected $fillable = [
         'nombre',
-        'cupo',
-        'instructor_id',
-        'disciplina_id',
-    ];
-
+        'marca',
+        'modelo',
+        'estado_id',
+        'sala_id'
+    ]; 
 }
