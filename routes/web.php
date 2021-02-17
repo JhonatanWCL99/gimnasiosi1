@@ -40,13 +40,13 @@ Route::put('/instructores/{instructor}', [App\Http\Controllers\InstructorControl
 Route::delete('/instructores/{instructor}', [App\Http\Controllers\InstructorController::class, 'destroy'])->name('instructores.delete');
 
 //Rutas para el cliente//
-Route::get('/clientes', [App\Http\Controllers\InstructorController::class, 'index'])->name('clientes.index');
-Route::get('/clientes/create', [App\Http\Controllers\InstructorController::class, 'create'])->name('clientes.create');
-Route::post('/clientes', [App\Http\Controllers\InstructorController::class, 'store'])->name('clientes.store');
-Route::get('/clientes/{cliente}', [App\Http\Controllers\InstructorController::class, 'show'])->name('clientes.show');
-Route::get('/clientes/{cliente}/edit', [App\Http\Controllers\InstructorController::class, 'edit'])->name('clientes.edit');
-Route::put('/clientes/{cliente}', [App\Http\Controllers\InstructorController::class, 'update'])->name('clientes.update');
-Route::delete('/clientes/{cliente}', [App\Http\Controllers\InstructorController::class, 'destroy'])->name('clientes.delete');
+Route::get('/clientes', [App\Http\Controllers\ClienteController::class, 'index'])->name('clientes.index');
+Route::get('/clientes/create', [App\Http\Controllers\ClienteController::class, 'create'])->name('clientes.create');
+Route::post('/clientes', [App\Http\Controllers\ClienteController::class, 'store'])->name('clientes.store');
+Route::get('/clientes/{cliente}', [App\Http\Controllers\ClienteController::class, 'show'])->name('clientes.show');
+Route::get('/clientes/{cliente}/edit', [App\Http\Controllers\ClienteController::class, 'edit'])->name('clientes.edit');
+Route::put('/clientes/{cliente}', [App\Http\Controllers\ClienteController::class, 'update'])->name('clientes.update');
+Route::delete('/clientes/{cliente}', [App\Http\Controllers\ClienteController::class, 'destroy'])->name('clientes.delete');
 
 //Rutas para el control de acceso//
 Route::post('/accesos', [App\Http\Controllers\AccesoController::class, 'login'])->name('acceso.login');
