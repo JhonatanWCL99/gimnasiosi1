@@ -5,27 +5,56 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Persona;
 use App\Models\Administrador;
+use App\Models\User;
+use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Facades\Hash;
 
 class AdministradorController extends Controller
 {
-    public function mostrarAdmis()
+    public function index()
     {
         $administradores =Administrador::paginate(5);
         return view('administradores.index', compact('administradores'));
     }
 
-    public function mostrarCrearAdmi()
+    public function create()
     {
         return view('administradores.create');
     }
 
-    public function guardar(Request $request)
+    public function store(Request $request)
     {
-        $persona=Persona::create($request->all());
+        $validator=Validator::make($request->all(), [
+            'name' => ['required', 'string', 'max:255'],
+            'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
+            'password' => ['required']
+        ]);
+        if(!$validator->fails()) {
 
-        $administrador=Administrador::create($request->only('tipo_administrador',$persona->id));
+            $persona = Persona::create([
+                'nombre' => $request['nombre'],
+                'apellido' => $request['apellido'],
+                'fecha_nacimiento' => $request['fecha_nacimiento'],
+                'carnet_identidad' => $request['carnet_identidad'],
+                'correo' => $request['correo'],
+                'telefono' => $request['telefono'],
+            ]);
+            
+            $administrador = Administrador::create([
+                'tipo_instructor' => $request['tipo_instructor'],
+                'persona_id' => $persona->id,
+            ]); 
 
-        return redirect()->route('administradores.show', $administrador->id)->with('success', 'Administrador creado correctamente');
+            $user = User::create([
+                'email' => $request['email'],
+                'password' => Hash::make($request['password']),
+                'persona_id' => $administrador->id,
+            ]);
+            
+            return redirect()->route('administradores.show', $user->id)->with('success', 'Administrador creado correctamente');
+        }else{
+            return response()->json(['status_code'=>400,'message'=>$validator->errors()]);
+        }  
     }
 
     public function mostrarAdministrador(Administrador $administrador)
@@ -41,6 +70,9 @@ class AdministradorController extends Controller
     public function update(Request $request, Administrador $administrador)
     {
         $data = $request->only('nombre', 'apellido','fecha_nacimiento','carnet_identidad','correo','telefono', 'tipo_administrador');
+        $password=$request->input('password');
+        if($password)
+            $data['password'] = bcrypt($password);
         $administrador->update($data);
         return redirect()->route('administradores.show', $administrador->id)->with('success', 'Administrador actualizado correctamente');
     }
