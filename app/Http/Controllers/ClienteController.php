@@ -12,8 +12,8 @@ class ClienteController extends Controller
 {
     public function index()
     {
-        $cliente =Cliente::paginate(5);
-        return view('clientes.index', compact('clientes'));
+        //$cliente =Cliente::paginate(5);
+        return view('clientes.index');
     }
 
     public function create()

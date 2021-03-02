@@ -50,3 +50,4 @@ Route::delete('/clientes/{cliente}', [App\Http\Controllers\ClienteController::cl
 
 //Rutas para el control de acceso//
 Route::post('/accesos', [App\Http\Controllers\AccesoController::class, 'login'])->name('acceso.login');
+
