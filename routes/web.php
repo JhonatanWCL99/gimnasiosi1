@@ -85,10 +85,10 @@ Route::post('/casilleros', [App\Http\Controllers\CasillerController::class, 'sto
 Route::delete('/casilleros/{casillero}', [App\Http\Controllers\CasillerController::class, 'destroy'])->name('casilleros.delete');
 
 //Rutas para salas//
-Route::get('/salas/create', [App\Http\Controllers\CasillerController::class, 'create'])->name('salas.create');
-Route::get('/salas', [App\Http\Controllers\CasillerController::class, 'index'])->name('salas.index');
-Route::post('/salas', [App\Http\Controllers\CasillerController::class, 'store'])->name('salas.store');
-Route::delete('/salas/{sala}', [App\Http\Controllers\CasillerController::class, 'destroy'])->name('salas.delete');
+Route::get('/salas/create', [App\Http\Controllers\SalaController::class, 'create'])->name('salas.create');
+Route::get('/salas', [App\Http\Controllers\SalaController::class, 'index'])->name('salas.index');
+Route::post('/salas', [App\Http\Controllers\SalaController::class, 'store'])->name('salas.store');
+Route::delete('/salas/{sala}', [App\Http\Controllers\SalaController::class, 'destroy'])->name('salas.delete');
 
 //Rutas para aparatos//
 Route::get('/aparatos/create', [App\Http\Controllers\AparatoController::class, 'create'])->name('aparatos.create');

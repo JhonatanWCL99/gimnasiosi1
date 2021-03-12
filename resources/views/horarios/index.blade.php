@@ -26,8 +26,8 @@
                       <table class="table">
                         <thead class="text-primary">
                           <th>ID</th>
-                          <th>hora_inicio</th>
-                          <th>hora_inicio</th>
+                          <th>Hora Inicio</th>
+                          <th>Hora Fin</th>
                           <th>Dias</th>
                           <th>ID de la Sala</th>
                           <th class="text-right">Acciones</th>
