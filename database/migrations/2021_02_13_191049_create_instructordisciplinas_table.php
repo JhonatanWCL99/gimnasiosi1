@@ -20,9 +20,9 @@ class CreateInstructordisciplinasTable extends Migration
             $table->timestamps();
 
             $table->foreign('instructor_id')->on('instructores')->references('id')
-            ->onDelete('cascade');
+            ->onDelete('cascade')->onUpdate('cascade');
             $table->foreign('disciplina_id')->on('disciplinas')->references('id')
-            ->onDelete('cascade');
+            ->onDelete('cascade')->onUpdate('cascade');
         });
     }
 

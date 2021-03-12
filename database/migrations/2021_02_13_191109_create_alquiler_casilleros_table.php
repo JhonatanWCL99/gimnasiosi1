@@ -25,11 +25,11 @@ class CreateAlquilerCasillerosTable extends Migration
             $table->timestamps();
 
             $table->foreign('casillero_id')->on('casilleros')->references('id')
-            ->onDelete('cascade');
+            ->onDelete('cascade')->onUpdate('cascade');
             $table->foreign('cliente_id')->on('clientes')->references('id')
-            ->onDelete('cascade');
+            ->onDelete('cascade')->onUpdate('cascade');
             $table->foreign('administrador_id')->on('administradores')->references('id')
-            ->onDelete('cascade');
+            ->onDelete('cascade')->onUpdate('cascade');
         });
     }
 

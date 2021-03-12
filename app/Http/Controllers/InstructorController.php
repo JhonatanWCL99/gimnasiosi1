@@ -6,13 +6,16 @@ use Illuminate\Http\Request;
 use App\Models\Persona;
 use App\Models\Instructor;
 use Illuminate\Support\Facades\Validator;
+use Carbon\Carbon;
 
 class InstructorController extends Controller
 {
     public function index()
     {
-       // $instructores =Instructor::paginate(5);
-        return view('instructores.index');
+        $instructores=Instructor::join('personas','personas.id','=','instructores.persona_id')
+        ->select('instructores.*','personas.nombre','personas.apellido','personas.correo')
+        ->get();
+        return view('instructores.index', compact('instructores'));   
     }
 
     public function create()
@@ -23,15 +26,19 @@ class InstructorController extends Controller
     public function store(Request $request)
     {
         $validator=Validator::make($request->all(), [
-            'nombre' => ['required', 'string',  ],
-            'correo' => ['required', 'string', 'email', 'max:255', 'unique:users']
+            'nombre' => ['required', 'string', 'max:255'],
+            'apellido' =>  ['required'],
+            'correo' => ['required', 'string', 'email', 'max:255', 'unique:personas'],
+            'carnet_identidad' =>  ['required'],
+            'telefono' =>  ['required'],
+            'tipo_instructor' =>  ['required']
         ]);
         if(!$validator->fails()) {
 
             $persona = Persona::create([
                 'nombre' => $request['nombre'],
                 'apellido' => $request['apellido'],
-                'fecha_nacimiento' => $request['fecha_nacimiento'],
+                'fecha_nacimiento' =>  Carbon::now('America/La_Paz')->toDateString(),
                 'carnet_identidad' => $request['carnet_identidad'],
                 'correo' => $request['correo'],
                 'telefono' => $request['telefono'],
@@ -42,7 +49,7 @@ class InstructorController extends Controller
                 'persona_id' => $persona->id,
             ]); 
             
-            return redirect()->route('instructores.show', $instructor->id)->with('success', 'instructor creado correctamente');
+            return redirect()->route('instructores.index', $instructor->id)->with('success', 'Instructor creado correctamente');
         }else{
             return response()->json(['status_code'=>400,'message'=>$validator->errors()]);
         }  
@@ -50,6 +57,10 @@ class InstructorController extends Controller
 
     public function show(Instructor $instructor)
     {
+        $instructor=Instructor::select('instructores.*','personas.nombre','personas.apellido','personas.fecha_nacimiento','personas.carnet_identidad','personas.correo','personas.telefono')
+            ->join('personas','personas.id','=','instructores.persona_id')
+            ->where('instructores.id',$instructor['id'])
+            ->first();
         return view('instructores.show', compact('instructor'));
     }
 
@@ -61,23 +72,28 @@ class InstructorController extends Controller
     public function update(Request $request, Instructor $instructor)
     {   
         $validator=Validator::make($request->all(), [
-            'nombre' => ['required', 'string',  ],
-            'correo' => ['required', 'string', 'email', 'max:255', 'unique:users']
+            'nombre' => ['required', 'string', 'max:255'],
+            'apellido' =>  ['required'],
+            'correo' => ['required', 'string', 'email', 'max:255', 'unique:personas'],
+            'carnet_identidad' =>  ['required'],
+            'telefono' =>  ['required'],
+            'tipo_instructor' =>  ['required']
         ]);
 
         if ($validator->fails())
         {
             return redirect()->back()->withInput()->withErrors($validator->errors());
         }
-
-        $data = $request->only('nombre', 'apellido','fecha_nacimiento','carnet_identidad','correo','telefono', 'tipo_instructor');
-        $instructor->update($data);
-        return redirect()->route('instructores.show', $instructor->id)->with('success', 'instructor actualizado correctamente');
+        
+        $data = $request->only('nombre','apellido','correo','carnet_identidad','telefono','tipo_instructor');
+        
+        $instructor->join('personas','personas.id','=','instructores.persona_id')->update($data);
+        return redirect()->route('instructores.index', $instructor->id)->with('success', 'Instructor actualizado correctamente');
     }
 
     public function destroy(Instructor $instructor)
     {
         $instructor->delete();
-        return back()->with('success','instructor eliminado correctamente');
+        return back()->with('success','Instructor eliminado correctamente');
     }
 }

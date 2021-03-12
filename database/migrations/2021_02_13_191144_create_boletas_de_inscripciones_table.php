@@ -26,11 +26,11 @@ class CreateBoletasDeInscripcionesTable extends Migration
             $table->timestamps();
 
             $table->foreign('descuento_id')->on('descuentos')->references('id')
-            ->onDelete('cascade');
+            ->onDelete('cascade')->onUpdate('cascade');
             $table->foreign('cliente_id')->on('clientes')->references('id')
-            ->onDelete('cascade');
+            ->onDelete('cascade')->onUpdate('cascade');
             $table->foreign('administrador_id')->on('administradores')->references('id')
-            ->onDelete('cascade');
+            ->onDelete('cascade')->onUpdate('cascade');
         });
     }
 

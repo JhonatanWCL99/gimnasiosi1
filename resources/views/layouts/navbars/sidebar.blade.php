@@ -15,7 +15,7 @@
 
 
       <li class="nav-item {{ ($activePage == 'profile' || $activePage == 'user-management') ? ' active' : '' }}">
-        <a class="nav-link" data-toggle="collapse" href="#laravelExample1" aria-expanded="false">
+        <a class="nav-link " data-toggle="collapse" href="#laravelExample1" aria-expanded="false">
           <i><img style="width:25px" src="{{ asset('img/logo1.jpg') }}"></i>
           <p>{{ __('Adm. de Servicios') }}
             <b class="caret"></b>
@@ -24,38 +24,38 @@
         <div class="collapse show" id="laravelExample1">
           <ul class="nav">
 
-            <li class="nav-item{{ $activePage == 'profile' ? ' active' : '' }}">
-              <a class="nav-link" href="#">
+            <li class="nav-item{{ $activePage == 'grupos' ? ' active' : '' }}">
+              <a class="nav-link" href="{{ route('grupos.index') }}">
                 <span class="sidebar-mini"> UP </span>
                 <span class="sidebar-normal">{{ __('Grupo de Entrenamiento') }} </span>
               </a>
             </li>
 
-            <li class="nav-item{{ $activePage == 'user-management' ? ' active' : '' }}">
-              <a class="nav-link" href="#">
+            <li class="nav-item{{ $activePage == 'horarios' ? ' active' : '' }}">
+              <a class="nav-link" href="{{ route('horarios.index') }}">
                 <span class="sidebar-mini"> UM </span>
                 <span class="sidebar-normal"> {{ __('Horario') }} </span>
               </a>
             </li>
 
-            <li class="nav-item{{ $activePage == 'user-management' ? ' active' : '' }}">
-              <a class="nav-link" href="#">
+            <li class="nav-item{{ $activePage == 'disciplinas' ? ' active' : '' }}">
+              <a class="nav-link" href="{{ route('disciplinas.index') }}">
                 <span class="sidebar-mini"> UM </span>
                 <span class="sidebar-normal"> {{ __('Disciplina') }} </span>
               </a>
             </li>
 
-            <li class="nav-item{{ $activePage == 'user-management' ? ' active' : '' }}">
-              <a class="nav-link" href="#">
+            <li class="nav-item{{ $activePage == 'categorias' ? ' active' : '' }}">
+              <a class="nav-link" href="{{ route('categorias.index') }}">
                 <span class="sidebar-mini"> UM </span>
                 <span class="sidebar-normal"> {{ __('Categoria') }} </span>
               </a>
             </li>
 
-            <li class="nav-item{{ $activePage == 'user-management' ? ' active' : '' }}">
-              <a class="nav-link" href="#">
+            <li class="nav-item{{ $activePage == 'descuentos' ? ' active' : '' }}">
+              <a class="nav-link" href="{{ route('descuentos.index') }}">
                 <span class="sidebar-mini"> UM </span>
-                <span class="sidebar-normal"> {{ __('Descuento') }} </span>
+                <span class="sidebar-noirmal"> {{ __('Descuento') }} </span>
               </a>
             </li>
 
@@ -76,22 +76,22 @@
         <div class="collapse show" id="laravelExample2">
           <ul class="nav">
 
-            <li class="nav-item{{ $activePage == 'profile' ? ' active' : '' }}">
-              <a class="nav-link" href="#">
+            <li class="nav-item{{ $activePage == 'casilleros' ? ' active' : '' }}">
+              <a class="nav-link" href="{{ route('casilleros.index') }}">
                 <span class="sidebar-mini"> UP </span>
                 <span class="sidebar-normal">{{ __('Casillero') }} </span>
               </a>
             </li>
 
-            <li class="nav-item{{ $activePage == 'user-management' ? ' active' : '' }}">
-              <a class="nav-link" href="#">
+            <li class="nav-item{{ $activePage == 'salas' ? ' active' : '' }}">
+              <a class="nav-link" href="{{ route('salas.index') }}">
                 <span class="sidebar-mini"> UM </span>
                 <span class="sidebar-normal"> {{ __('Sala') }} </span>
               </a>
             </li>
 
-            <li class="nav-item{{ $activePage == 'user-management' ? ' active' : '' }}">
-              <a class="nav-link" href="#">
+            <li class="nav-item{{ $activePage == 'aparatos' ? ' active' : '' }}">
+              <a class="nav-link" href="{{ route('aparatos.index') }}">
                 <span class="sidebar-mini"> UM </span>
                 <span class="sidebar-normal"> {{ __('Aparato') }} </span>
               </a>
@@ -112,15 +112,15 @@
         <div class="collapse show" id="laravelExample3">
           <ul class="nav">
 
-            <li class="nav-item{{ $activePage == 'profile' ? ' active' : '' }}">
-              <a class="nav-link" href="#">
+            <li class="nav-item{{ $activePage == 'alquilercasilleros' ? ' active' : '' }}">
+              <a class="nav-link" href="{{ route('alquileres.index') }}">
                 <span class="sidebar-mini"> UP </span>
-                <span class="sidebar-normal">{{ __('Casillero') }} </span>
+                <span class="sidebar-normal">{{ __('Alquiler Casillero') }} </span>
               </a>
             </li>
 
-            <li class="nav-item{{ $activePage == 'user-management' ? ' active' : '' }}">
-              <a class="nav-link" href="#">
+            <li class="nav-item{{ $activePage == 'inscripciones' ? ' active' : '' }}">
+              <a class="nav-link" href="{{ route('inscripciones.index') }}">
                 <span class="sidebar-mini"> UM </span>
                 <span class="sidebar-normal"> {{ __('Inscripcion') }} </span>
               </a>
@@ -141,21 +141,21 @@
         <div class="collapse show" id="laravelExample4">
           <ul class="nav">
 
-            <li class="nav-item{{ $activePage == 'profile' ? ' active' : '' }}">
+            <li class="nav-item{{ $activePage == 'clientes' ? ' active' : '' }}">
               <a class="nav-link" href="{{ route('clientes.index') }}">
                 <span class="sidebar-mini"> UP </span>
                 <span class="sidebar-normal">{{ __('Cliente') }} </span>
               </a>
             </li>
 
-            <li class="nav-item{{ $activePage == 'profile' ? ' active' : '' }}">
+            <li class="nav-item{{ $activePage == 'instructores' ? ' active' : '' }}">
               <a class="nav-link" href="{{ route('instructores.index') }}">
                 <span class="sidebar-mini"> UP </span>
                 <span class="sidebar-normal"> {{ __('Instructor') }} </span>
               </a>
             </li>
 
-            <li class="nav-item{{ $activePage == 'profile' ? ' active' : '' }}">
+            <li class="nav-item{{ $activePage == 'administradores' ? ' active' : '' }}">
               <a class="nav-link" href="{{ route('administradores.index') }}">
                 <span class="sidebar-mini"> UP </span>
                 <span class="sidebar-normal"> {{ __('Administrador') }} </span>
@@ -202,17 +202,6 @@
           </ul>
         </div>
       </li>
-       
-
-    
-
-      <!--<li class="nav-item{{ $activePage == 'language' ? ' active' : '' }}">
-        <a class="nav-link" href="#">
-          <i class="material-icons">language</i>
-          <p>{{ __('RTL Support') }}</p>
-        </a>
-      </li>-->
-      
     </ul>
   </div>
 </div>

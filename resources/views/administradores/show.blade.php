@@ -1,4 +1,4 @@
-@extends('layouts.main', ['activePage' => 'users', 'titlePage' => 'Detalles del usuario'])
+@extends('layouts.main', ['activePage' => 'administradores', 'titlePage' => 'Detalles del administrador'])
 @section('content')
 <div class="content">
   <div class="container-fluid">
@@ -7,7 +7,7 @@
         <div class="card">
           <div class="card-header card-header-primary">
             <div class="card-title">Administradores</div>
-            <p class="card-category">Vista detallada del administrador {{ $user->name }}</p>
+            <p class="card-category">Vista detallada del administrador {{ $administrador->nombre }}</p>
           </div>
           <!--body-->
           <div class="card-body">
@@ -24,14 +24,14 @@
                       <div class="author">
                         <a href="#">
                           <img src="{{ asset('/img/default-avatar.png') }}" alt="image" class="avatar">
-                          <h5 class="title mt-3">{{ $user->name }}</h5>
+                          <h5 class="title mt-3">{{ $administrador->nombre }}</h5>
                         </a>
                         <p class="description">
-                        {{ $user->carnet_identidad }} <br>
-                        {{ $user->email }} <br>
-                        {{ $user->direccion }} <br>
-                        {{ $user->nro_telefono }} <br>
-                        {{ $user->tipo }} <br>
+                        {{ $administrador->nombre }} <br>
+                        {{ $administrador->apellido }} <br>
+                        {{ $administrador->carnet_identidad }} <br>
+                        {{ $administrador->telefono }} <br>
+                        {{ $administrador->tipo_administrador }} <br>
                         </p>
                       </div>
                     </p>
@@ -41,7 +41,7 @@
                   </div>
                   <div class="card-footer">
                     <div class="button-container">
-                    <a href="{{ route('users.edit', $user->id) }}" class="btn btn-sm btn-primary" >Editar</a>
+                    <a href="{{ route('administradores.edit', $administrador->id) }}" class="btn btn-sm btn-primary" >Editar</a>
                     </div>
                   </div>
                 </div>
@@ -54,12 +54,12 @@
                       <div class="author">
                         <a href="#" class="d-flex">
                           <img src="{{ asset('/img/default-avatar.png') }}" alt="image" class="avatar">
-                          <h5 class="title mx-3">{{ $user->name }}</h5>
+                          <h5 class="title mx-3">{{ $administrador->nombre }}</h5>
                         </a>
                         <p class="description">
-                          {{ $user->username }} <br>
-                          {{ $user->email }} <br>
-                          {{ $user->direccion }}
+                          {{ $administrador->nombre }} <br>
+                          {{ $administrador->password }} <br>
+                          {{ $administrador->fecha_nacimiento }}
                         </p>
                       </div>
                     </p>
@@ -69,8 +69,8 @@
                   </div>
                   <div class="card-footer">
                     <div class="button-container">
-                      <a href="{{ route('users.index') }}" class="btn btn-sm btn-success mr-3"> Volver </a>
-                      <a href="{{ route('users.edit', $user->id) }}" class="btn btn-sm btn-primary" >Editar</a>
+                      <a href="{{ route('administradores.index') }}" class="btn btn-sm btn-success mr-3"> Volver </a>
+                      <a href="{{ route('administradores.edit', $administrador->id) }}" class="btn btn-sm btn-primary" >Editar</a>
                     </div>
                   </div>
                 </div>
@@ -84,32 +84,32 @@
                       <tbody>
                         <tr>
                           <th>ID</th>
-                          <td>{{ $user->id }}
+                          <td>{{ $administrador->id }}
                           </td>
                         </tr>
                         <tr>
                           <th>Name</th>
-                          <td>{{ $user->name }}</td>
+                          <td>{{ $administrador->nombre }}</td>
                         </tr>
                         <tr>
                           <th>Email</th>
-                          <td><span class="badge badge-primary">{{ $user->email }}</span></td>
+                          <td><span class="badge badge-primary">{{ $administrador->correo }}</span></td>
                         </tr>
                         <tr>
                           <th>CI</th>
-                          <td>{!! $user->carnet_identidad !!}</td>
+                          <td>{!! $administrador->carnet_identidad !!}</td>
                         </tr>
                         <tr>
                           <th>Direccion</th>
-                          <td><a href="#" target="_blank">{{  $user->direccion  }}</a></td>
+                          <td><a href="#" target="_blank">{{  $administrador->tipo_administrador  }}</a></td>
                         </tr>
                       </tbody>
                     </table>
                   </div>
                   <div class="card-footer">
                     <div class="button-container">
-                      <a href="{{ route('users.index') }}" class="btn btn-sm btn-success mr-3"> Volver </a>
-                      <a href="{{ route('users.edit', $user->id) }}" class="btn btn-sm btn-twitter"> Editar </a>
+                      <a href="{{ route('administradores.index') }}" class="btn btn-sm btn-success mr-3"> Volver </a>
+                      <a href="{{ route('administradores.edit', $administrador->id) }}" class="btn btn-sm btn-twitter"> Editar </a>
                     </div>
                   </div>
                 </div>

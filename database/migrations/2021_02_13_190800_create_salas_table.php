@@ -20,7 +20,7 @@ class CreateSalasTable extends Migration
             $table->timestamps();
 
             $table->foreign('estado_id')->on('estados')->references('id')
-            ->onDelete('cascade');
+            ->onDelete('cascade')->onUpdate('cascade');
         });
     }
 

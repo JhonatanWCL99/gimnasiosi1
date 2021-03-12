@@ -23,9 +23,9 @@ class CreateAparatosTable extends Migration
             $table->timestamps();
 
             $table->foreign('sala_id')->on('salas')->references('id')
-            ->onDelete('cascade');
+            ->onDelete('cascade')->onUpdate('cascade');
             $table->foreign('estado_id')->on('estados')->references('id')
-            ->onDelete('cascade');
+            ->onDelete('cascade')->onUpdate('cascade');
         });
     }
 

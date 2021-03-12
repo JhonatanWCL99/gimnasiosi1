@@ -14,8 +14,10 @@ class AdministradorController extends Controller
 {
     public function index()
     {
-       // $administradores =Administrador::paginate(5);
-        return view('administradores.index');
+        $administradores=Administrador::join('personas','personas.id','=','administradores.persona_id')
+        ->select('administradores.*','personas.nombre','personas.apellido','personas.correo')
+        ->get();
+        return view('administradores.index', compact('administradores')); 
     }
 
     public function create()
@@ -26,11 +28,10 @@ class AdministradorController extends Controller
     public function store(Request $request)
     {
         $validator=Validator::make($request->all(), [
-            'name' => ['required', 'string', 'max:255'],
-            'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
+            'nombre' => ['required', 'string', 'max:255'],
+            'correo' => ['required', 'string', 'email', 'max:255', 'unique:personas'],
             'password' => ['required'],
             'apellido' =>  ['required'],
-           // 'fecha_nacimiento' =>  ['required'],
             'carnet_identidad' =>  ['required'],
             'telefono' =>  ['required'],
             'tipo_administrador' =>  ['required']
@@ -38,17 +39,17 @@ class AdministradorController extends Controller
         if(!$validator->fails()) {
             
             $persona = Persona::create([
-                'nombre' => $request['name'],
+                'nombre' => $request['nombre'],
                 'apellido' => $request['apellido'],
                 'fecha_nacimiento' => Carbon::now('America/La_Paz')->toDateString(),
                 'carnet_identidad' => $request['carnet_identidad'],
-                'correo' => $request['email'],
+                'correo' => $request['correo'],
                 'telefono' => $request['telefono'],
             ]);
             
             $user = User::create([
-                'name' => $request['name'],
-                'email' => $request['email'],
+                'name' => $request['nombre'],
+                'email' => $request['correo'],
                 'password' => Hash::make($request['password']),
                 'persona_id' => $persona->id,
             ]);
@@ -57,9 +58,6 @@ class AdministradorController extends Controller
                 'tipo_administrador' => $request['tipo_administrador'],
                 'persona_id' => $persona->id,
             ]); 
-
-            
-            
             return redirect()->route('administradores.show', $administrador->id)->with('success', 'Administrador creado correctamente');
         }else{
             return response()->json(['status_code'=>400,'message'=>$validator->errors()]);
@@ -68,6 +66,10 @@ class AdministradorController extends Controller
 
     public function show(Administrador $administrador)
     {
+        $administrador=Administrador::select('administradores.*','personas.nombre','personas.apellido','personas.fecha_nacimiento','personas.carnet_identidad','personas.correo','personas.telefono')
+            ->join('personas','personas.id','=','administradores.persona_id')
+            ->where('administradores.id',$administrador['id'])
+            ->first();
         return view('administradores.show', compact('administrador'));
     }
 
@@ -78,11 +80,28 @@ class AdministradorController extends Controller
     
     public function update(Request $request, Administrador $administrador)
     {
-        $data = $request->only('nombre', 'apellido','fecha_nacimiento','carnet_identidad','correo','telefono', 'tipo_administrador');
+
+        $validator=Validator::make($request->all(), [
+            'nombre' => ['required', 'string', 'max:255'],
+            'apellido' =>  ['required'],
+            'correo' => ['required', 'string', 'email', 'max:255', 'unique:personas'],
+            'carnet_identidad' =>  ['required'],
+            'telefono' =>  ['required'],
+            'tipo_administrador' =>  ['required']
+        ]);
+
+        if ($validator->fails())
+        {
+            return redirect()->back()->withInput()->withErrors($validator->errors());
+        }
+
+        $data = $request->only('nombre', 'apellido','correo','carnet_identidad','telefono', 'tipo_administrador');
         $password=$request->input('password');
         if($password)
             $data['password'] = bcrypt($password);
-        $administrador->update($data);
+        $administrador->join('personas','personas.id','=','administradores.persona_id')
+        ->join('users','users.persona_id','=','personas.id')
+        ->update($data);
         return redirect()->route('administradores.show', $administrador->id)->with('success', 'Administrador actualizado correctamente');
     }
 

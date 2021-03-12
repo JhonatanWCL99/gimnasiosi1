@@ -23,9 +23,9 @@ class CreateHorariosTable extends Migration
             $table->timestamps();
 
             $table->foreign('grupo_id')->on('grupos_de_entrenamientos')->references('id')
-            ->onDelete('cascade');
+            ->onDelete('cascade')->onUpdate('cascade');
             $table->foreign('sala_id')->on('salas')->references('id')
-            ->onDelete('cascade');
+            ->onDelete('cascade')->onUpdate('cascade');
         });
     }
 

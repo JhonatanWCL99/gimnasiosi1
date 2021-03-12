@@ -20,7 +20,7 @@ class CreateClientesTable extends Migration
             $table->timestamps();
             
             $table->foreign('persona_id')->on('personas')->references('id')
-            ->onDelete('cascade');
+            ->onDelete('cascade')->onUpdate('cascade');
         });
     }
 

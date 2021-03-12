@@ -21,7 +21,7 @@ class CreateDisciplinasTable extends Migration
             $table->timestamps();
 
             $table->foreign('categoria_id')->on('categorias')->references('id')
-            ->onDelete('cascade');
+            ->onDelete('cascade')->onUpdate('cascade');
         });
     }
 
