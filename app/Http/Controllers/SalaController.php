@@ -15,11 +15,16 @@ class SalaController extends Controller
        return view('salas.index', compact('salas'));
     }
 
+    public function create()
+    {
+        return view('salas.create');
+    }
+
     public function store(Request $request)
     {
         $validator=Validator::make($request->all(), [
             'tamaño' => ['required'],
-            'estado_id' => ['required']
+            'nombre' => ['required'],
         ]);
         if(!$validator->fails()) {
 
@@ -53,5 +58,11 @@ class SalaController extends Controller
         $data = $request->only('tamaño','estado_id');
         $sala->update($data);
         return redirect()->route('salas.show', $sala->id)->with('success', 'Sala actualizado correctamente');
+    }
+
+    public function destroy(Sala $sala)
+    {
+        $sala->delete();
+        return back()->with('success','Sala eliminado correctamente');
     }
 }

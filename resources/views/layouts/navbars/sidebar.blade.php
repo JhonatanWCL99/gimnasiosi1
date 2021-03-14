@@ -11,7 +11,7 @@
   </div>
   <div class="sidebar-wrapper">
     <ul class="nav">
-      
+
 
 
       <li class="nav-item {{ ($activePage == 'profile' || $activePage == 'user-management') ? ' active' : '' }}">
@@ -65,7 +65,7 @@
       </li>
 
 
-       
+
       <li class="nav-item {{ ($activePage == 'profile' || $activePage == 'user-management') ? ' active' : '' }}">
         <a class="nav-link" data-toggle="collapse" href="#laravelExample2" aria-expanded="false">
           <i><img style="width:25px" src="{{ asset('img/logo1.jpg') }}"></i>
@@ -101,7 +101,7 @@
         </div>
       </li>
 
-      
+
       <li class="nav-item {{ ($activePage == 'profile' || $activePage == 'user-management3') ? ' active' : '' }}">
         <a class="nav-link" data-toggle="collapse" href="#laravelExample3" aria-expanded="true">
           <i><img style="width:25px" src="{{ asset('img/logo1.jpg') }}"></i>
@@ -130,7 +130,7 @@
         </div>
       </li>
 
-      
+
       <li class="nav-item {{ ($activePage == 'profile' || $activePage == 'user-management') ? ' active' : '' }}">
         <a class="nav-link" data-toggle="collapse" href="#laravelExample4" aria-expanded="true">
           <i><img style="width:25px" src="{{ asset('img/logo1.jpg') }}"></i>
@@ -161,34 +161,15 @@
                 <span class="sidebar-normal"> {{ __('Administrador') }} </span>
               </a>
             </li>
-
-          </ul>
-        </div>
-      </li>
-
-      
-      <li class="nav-item {{ ($activePage == 'profile' || $activePage == 'user-management') ? ' active' : '' }}">
-        <a class="nav-link" data-toggle="collapse" href="#laravelExample5" aria-expanded="true">
-          <i><img style="width:25px" src="{{ asset('img/logo1.jpg') }}"></i>
-          <p>{{ __('Adm. de Usuario') }}
-            <b class="caret"></b>
-          </p>
-        </a>
-        <div class="collapse show" id="laravelExample5">
-          <ul class="nav">
-
-            <li class="nav-item{{ $activePage == 'profile' ? ' active' : '' }}">
-              <a class="nav-link" href="#">
+            <li class="nav-item{{ $activePage == 'usuarios' ? ' active' : '' }}">
+              <a class="nav-link" href="{{ route('users.index') }}">
                 <span class="sidebar-mini"> UP </span>
                 <span class="sidebar-normal">{{ __('Usuario') }} </span>
               </a>
             </li>
-
           </ul>
         </div>
       </li>
-
-      
       <li class="nav-item {{ ($activePage == 'profile' || $activePage == 'user-management') ? ' active' : '' }}">
         <a class="nav-link" data-toggle="collapse" href="#laravelExample6" aria-expanded="true">
           <i><img style="width:25px" src="{{ asset('img/logo1.jpg') }}"></i>
@@ -198,7 +179,7 @@
         </a>
         <div class="collapse show" id="laravelExample6">
           <ul class="nav">
-           
+
           </ul>
         </div>
       </li>

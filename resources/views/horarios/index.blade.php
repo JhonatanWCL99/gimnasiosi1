@@ -43,7 +43,6 @@
                               <td>{{ $horario->sala_id }}</td>
                               <td class="td-actions text-right">
                               <a href="{{ route('horarios.show', $horario->id) }}" class="btn btn-info"><i class="material-icons">person</i></a>
-                              <a href="{{ route('horarios.edit', $horario->id) }}" class="btn btn-warning"><i class="material-icons">edit</i></a>
                                 <form action="{{ route('horarios.delete', $horario->id) }}" method="POST" style="display: inline-block;" onsubmit="return confirm('Seguro?')">
                                 @csrf
                                 @method('DELETE')

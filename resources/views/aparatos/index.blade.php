@@ -45,7 +45,6 @@
                               <td>{{ $aparato->sala_id }}</td>
                               <td class="td-actions text-right">
                               <a href="{{ route('aparatos.show', $aparato->id) }}" class="btn btn-info"><i class="material-icons">person</i></a>
-                              <a href="{{ route('aparatos.edit', $aparato->id) }}" class="btn btn-warning"><i class="material-icons">edit</i></a>
                                 <form action="{{ route('aparatos.delete', $aparato->id) }}" method="POST" style="display: inline-block;" onsubmit="return confirm('Seguro?')">
                                 @csrf
                                 @method('DELETE')

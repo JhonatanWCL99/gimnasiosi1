@@ -4,7 +4,7 @@
     <div class="container-fluid">
         <div class="row">
             <div class="col-md-12">
-                <form action="{{ route('categorias.store') }}" method="post" class="form-horizontal">
+                <form action="{{ route('horarios.store') }}" method="post" class="form-horizontal">
                     @csrf
                     <div class="card">
                         <div class="card-header card-header-primary">
@@ -39,7 +39,15 @@
                             <div class="row">
                                 <label for="sala_id" class="col-sm-2 col-form-label">Sala</label>
                                 <div class="col-sm-7">
-                                    <input type="number" class="form-control" name="hora_inicio" placeholder="Ingrese la sala" autofocus>
+                                    <input type="number" class="form-control" name="sala_id" placeholder="Ingrese la sala" autofocus>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card-body">
+                            <div class="row">
+                                <label for="grupo_id" class="col-sm-2 col-form-label">Grupo</label>
+                                <div class="col-sm-7">
+                                    <input type="number" class="form-control" name="grupo_id" placeholder="Ingrese el grupo" autofocus>
                                 </div>
                             </div>
                         </div>

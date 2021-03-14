@@ -41,7 +41,6 @@
                               <td>{{ $casillero->costo }}</td>
                               <td class="td-actions text-right">
                               <a href="{{ route('casilleros.show', $casillero->id) }}" class="btn btn-info"><i class="material-icons">person</i></a>
-                              <a href="{{ route('casilleros.edit', $casillero->id) }}" class="btn btn-warning"><i class="material-icons">edit</i></a>
                                 <form action="{{ route('casilleros.delete', $casillero->id) }}" method="POST" style="display: inline-block;" onsubmit="return confirm('Seguro?')">
                                 @csrf
                                 @method('DELETE')

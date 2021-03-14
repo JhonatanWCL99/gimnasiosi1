@@ -1,4 +1,4 @@
-@extends('layouts.main', ['activePage' => 'alquilercasilleros', 'titlePage' => 'alquilercasilleros'])
+@extends('layouts.main', ['activePage' => 'alquilercasilleros', 'titlePage' => 'Alquiler de Casilleros'])
 @section('content')
     <div class="content">
       <div class="container-fluid">
@@ -8,8 +8,8 @@
               <div class="col-md-12">
                 <div class="card">
                   <div class="card-header card-header-primary">
-                    <h4 class="card-title">Horario</h4>
-                    <p class="card-category">Horarios registrados</p>
+                    <h4 class="card-title">Alquileres</h4>
+                    <p class="card-category">Alquileres registrados</p>
                   </div>
                   <div class="card-body">
                     @if (session('success'))
@@ -19,32 +19,32 @@
                     @endif
                     <div class="row">
                       <div class="col-12 text-right">
-                        <a href="{{ route('horarios.create') }}" class="btn btn-sm btn-facebook">Añadir Horario</a>
+                        <a href="{{ route('alquileres.create') }}" class="btn btn-sm btn-facebook">Añadir Casillero</a>
                       </div>
                     </div>
                     <div class="table-responsive">
                       <table class="table">
                         <thead class="text-primary">
                           <th>ID</th>
-                          <th>hora_inicio</th>
-                          <th>hora_inicio</th>
-                          <th>Correo</th>
-                          <th>Tipo de Instructor</th>
+                          <th>Fecha</th>
+                          <th>Cantidad</th>
+                          <th>Importes</th>
+                          <th>Total</th>
                           <th class="text-right">Acciones</th>
                         </thead>
                         <tbody >
                         <!-- esto es la base de datos depende a sus atributos -->
-                        @foreach ($horarios as $horario)
+                        @foreach ($alquileres as $alquiler)
                             <tr > 
-                              <td>{{ $horario->id }}</td>
-                              <td>{{ $horario->hora_inicio }}</td>
-                              <td>{{ $horario->hora_fin }}</td>
-                              <td>{{ $horario->dia }}</td>
-                              <td>{{ $horario->sala_id }}</td>
+                              <td>{{ $alquiler->id }}</td>
+                              <td>{{ $alquiler->fecha }}</td>
+                              <td>{{ $alquiler->cantidad }}</td>
+                              <td>{{ $alquiler->importe }}</td>
+                              <td>{{ $alquiler->total }}</td>
                               <td class="td-actions text-right">
-                              <a href="{{ route('horarios.show', $horario->id) }}" class="btn btn-info"><i class="material-icons">person</i></a>
-                              <a href="{{ route('horarios.edit', $horario->id) }}" class="btn btn-warning"><i class="material-icons">edit</i></a>
-                                <form action="{{ route('horarios.delete', $horario->id) }}" method="POST" style="display: inline-block;" onsubmit="return confirm('Seguro?')">
+                              <a href="{{ route('alquileres.show', $alquiler->id) }}" class="btn btn-info"><i class="material-icons">person</i></a>
+                              <a href="{{ route('alquileres.edit', $alquiler->id) }}" class="btn btn-warning"><i class="material-icons">edit</i></a>
+                                <form action="{{ route('alquileres.delete', $alquiler->id) }}" method="POST" style="display: inline-block;" onsubmit="return confirm('Seguro?')">
                                 @csrf
                                 @method('DELETE')
                                 <button class="btn btn-danger" type="submit" rel="tooltip">

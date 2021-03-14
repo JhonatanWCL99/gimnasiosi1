@@ -19,6 +19,14 @@
                                 </div>
                             </div>
                         </div>
+                        <div class="card-body">
+                            <div class="row">
+                                <label for="nombre" class="col-sm-2 col-form-label">Estado</label>
+                                <div class="col-sm-7">
+                                    <input type="text" class="form-control" name="nombre" placeholder="Ingrese el Estado" autofocus>
+                                </div>
+                            </div>
+                        </div>
                         <!--Footer-->
                         <div class="card-footer ml-auto mr-auto">
                                 <button type="submit" class="btn btn-primary">Guardar</button>

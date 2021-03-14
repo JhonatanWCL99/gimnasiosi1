@@ -24,7 +24,8 @@ class HorarioController extends Controller
             'hora_inicio' => ['required'],
             'hora_fin' =>  ['required'],
             'dia' => ['required'],
-            'sala_id' =>  ['required']
+            'sala_id' =>  ['required'],
+            'grupo_id' =>  ['required']
         ]);
         if(!$validator->fails()) {
 
@@ -33,6 +34,7 @@ class HorarioController extends Controller
                 'hora_fin' => $request['hora_fin'],
                 'dia' =>  $request['dia'],
                 'sala_id' => $request['sala_id'],
+                'grupo_id' => $request['grupo_id'],
             ]);
             
             return redirect()->route('horarios.index', $horario->id)->with('success', 'Horario añadido correctamente');

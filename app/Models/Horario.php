@@ -14,7 +14,8 @@ class Horario extends Model
         'hora_inicio',
         'hora_fin',
         'dia',
-        'sala_id'
+        'sala_id',
+        'grupo_id'
     ];
 
 }

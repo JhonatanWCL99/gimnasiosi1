@@ -71,39 +71,56 @@ Route::get('/grupos/create', [App\Http\Controllers\GrupoController::class, 'crea
 Route::get('/grupos', [App\Http\Controllers\GrupoController::class, 'index'])->name('grupos.index');
 Route::post('/grupos', [App\Http\Controllers\GrupoController::class, 'store'])->name('grupos.store');
 Route::delete('/grupos/{grupo}', [App\Http\Controllers\GrupoController::class, 'destroy'])->name('grupos.delete');
+Route::get('/grupos/{grupo}', [App\Http\Controllers\GrupoController::class, 'show'])->name('grupos.show');
+
 
 //Rutas para horarios//
 Route::get('/horarios/create', [App\Http\Controllers\HorarioController::class, 'create'])->name('horarios.create');
 Route::get('/horarios', [App\Http\Controllers\HorarioController::class, 'index'])->name('horarios.index');
 Route::post('/horarios', [App\Http\Controllers\HorarioController::class, 'store'])->name('horarios.store');
 Route::delete('/horarios/{horario}', [App\Http\Controllers\HorarioController::class, 'destroy'])->name('horarios.delete');
+Route::get('/horarios/{horario}', [App\Http\Controllers\HorarioController::class, 'show'])->name('horarios.show');
 
 //Rutas para casilleros//
 Route::get('/casilleros/create', [App\Http\Controllers\CasillerController::class, 'create'])->name('casilleros.create');
 Route::get('/casilleros', [App\Http\Controllers\CasillerController::class, 'index'])->name('casilleros.index');
 Route::post('/casilleros', [App\Http\Controllers\CasillerController::class, 'store'])->name('casilleros.store');
 Route::delete('/casilleros/{casillero}', [App\Http\Controllers\CasillerController::class, 'destroy'])->name('casilleros.delete');
+Route::get('/casilleros/{casillero}', [App\Http\Controllers\CasillerController::class, 'show'])->name('casilleros.show');
 
 //Rutas para salas//
 Route::get('/salas/create', [App\Http\Controllers\SalaController::class, 'create'])->name('salas.create');
 Route::get('/salas', [App\Http\Controllers\SalaController::class, 'index'])->name('salas.index');
 Route::post('/salas', [App\Http\Controllers\SalaController::class, 'store'])->name('salas.store');
 Route::delete('/salas/{sala}', [App\Http\Controllers\SalaController::class, 'destroy'])->name('salas.delete');
+Route::get('/salas/{sala}', [App\Http\Controllers\SalaController::class, 'show'])->name('salas.show');
+
 
 //Rutas para aparatos//
 Route::get('/aparatos/create', [App\Http\Controllers\AparatoController::class, 'create'])->name('aparatos.create');
 Route::get('/aparatos', [App\Http\Controllers\AparatoController::class, 'index'])->name('aparatos.index');
 Route::post('/aparatos', [App\Http\Controllers\AparatoController::class, 'store'])->name('aparatos.store');
 Route::delete('/aparatos/{aparato}', [App\Http\Controllers\AparatoController::class, 'destroy'])->name('aparatos.delete');
+Route::get('/aparatos/{aparato}', [App\Http\Controllers\AparatoController::class, 'show'])->name('aparatos.show');
+
 
 //Rutas para Alquiler//
 Route::get('/alquileres/create', [App\Http\Controllers\AlquilerController::class, 'create'])->name('alquileres.create');
 Route::get('/alquileres', [App\Http\Controllers\AlquilerController::class, 'index'])->name('alquileres.index');
 Route::post('/alquileres', [App\Http\Controllers\AlquilerController::class, 'store'])->name('alquileres.store');
 Route::delete('/alquileres/{alquiler}', [App\Http\Controllers\AlquilerController::class, 'destroy'])->name('alquileres.delete');
+Route::get('/alquileres/{alquiler}', [App\Http\Controllers\AlquilerController::class, 'show'])->name('alquileres.show');
+Route::get('/alquileres/{alquiler}/edit', [App\Http\Controllers\AlquilerController::class, 'edit'])->name('alquileres.edit');
+Route::put('/alquileres/{alquiler}', [App\Http\Controllers\AlquilerController::class, 'update'])->name('alquileres.update');
 
 //Rutas para Inscripcion//
 Route::get('/inscripciones/create', [App\Http\Controllers\InscripcionController::class, 'create'])->name('inscripciones.create');
 Route::get('/inscripciones', [App\Http\Controllers\InscripcionController::class, 'index'])->name('inscripciones.index');
 Route::post('/inscripciones', [App\Http\Controllers\InscripcionController::class, 'store'])->name('inscripciones.store');
 Route::delete('/inscripciones/{inscripcion}', [App\Http\Controllers\InscripcionController::class, 'destroy'])->name('inscripciones.delete');
+Route::get('/inscripciones/{inscripcion}', [App\Http\Controllers\InscripcionController::class, 'show'])->name('inscripciones.show');
+Route::get('/inscripciones/{inscripcion}/edit', [App\Http\Controllers\InscripcionController::class, 'edit'])->name('inscripciones.edit');
+Route::put('/inscripciones/{inscripcion}', [App\Http\Controllers\InscripcionController::class, 'update'])->name('inscripciones.update');
+
+//Rutas para user//
+Route::get('/users', [App\Http\Controllers\UserController::class, 'index'])->name('users.index');
